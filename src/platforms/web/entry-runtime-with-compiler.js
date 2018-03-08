@@ -15,11 +15,13 @@ const idToTemplate = cached(id => {
 })
 
 const mount = Vue.prototype.$mount
+
+//里面定义了options.render方法
 Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
-  el = el && query(el)
+  el = el && query(el) //查询el标签
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
@@ -31,6 +33,7 @@ Vue.prototype.$mount = function (
 
   const options = this.$options
   // resolve template/el and convert to render function
+  //如果没render方法
   if (!options.render) {
     let template = options.template
     if (template) {

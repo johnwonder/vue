@@ -140,12 +140,14 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+//在/platforms/web/index.js中定义Vue.prototype.$mount
 export function mountComponent (
   vm: Component,
   el: ?Element,
   hydrating?: boolean
 ): Component {
   vm.$el = el
+
   if (!vm.$options.render) {
     vm.$options.render = createEmptyVNode
     if (process.env.NODE_ENV !== 'production') {
@@ -196,6 +198,7 @@ export function mountComponent (
   // we set this to vm._watcher inside the watcher's constructor
   // since the watcher's initial patch may call $forceUpdate (e.g. inside child
   // component's mounted hook), which relies on vm._watcher being already defined
+ //在这边定义Watcher对象
   new Watcher(vm, updateComponent, noop, null, true /* isRenderWatcher */)
   hydrating = false
 
@@ -314,6 +317,7 @@ export function deactivateChildComponent (vm: Component, direct?: boolean) {
   }
 }
 
+//调用options里定义的hook方法
 export function callHook (vm: Component, hook: string) {
   const handlers = vm.$options[hook]
   if (handlers) {

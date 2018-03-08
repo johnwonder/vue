@@ -10,6 +10,8 @@ import { LIFECYCLE_HOOKS } from 'shared/constants'
 
 export type Config = {
   // user
+  //flow的语法
+  //
   optionMergeStrategies: { [key: string]: Function };
   silent: boolean;
   productionTip: boolean;
@@ -17,7 +19,7 @@ export type Config = {
   devtools: boolean;
   errorHandler: ?(err: Error, vm: Component, info: string) => void;
   warnHandler: ?(msg: string, vm: Component, trace: string) => void;
-  ignoredElements: Array<string | RegExp>;
+  ignoredElements: Array<string | RegExp>; //
   keyCodes: { [key: string]: number | Array<number> };
 
   // platform
@@ -51,6 +53,7 @@ export default ({
 
   /**
    * Whether to enable devtools
+    如果NODE_ENV 不是production 那么就为true
    */
   devtools: process.env.NODE_ENV !== 'production',
 

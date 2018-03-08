@@ -34,6 +34,8 @@ extend(Vue.options.components, platformComponents)
 Vue.prototype.__patch__ = inBrowser ? patch : noop
 
 // public mount method
+//在 init.js中调用 
+//这边的$mount方法在entry 里会被替代掉
 Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
